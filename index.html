@@ -126,6 +126,13 @@
   .menyu .oyna b{display:block;margin-bottom:4px}
   .menyu .oyna p{color:var(--muted);margin:0 0 14px;font-size:13px}
   .menyu .ikkinchi{background:var(--panel2);color:var(--text)}
+  .tillar{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0 0 14px}
+  .tillar button{padding:11px 8px;border-radius:12px;border:1px solid var(--line);background:var(--panel2);color:var(--text);font-weight:600}
+  .tillar button.on{background:var(--gold);border-color:var(--gold);color:#2b1d00}
+  .tilkichik{position:absolute;top:calc(14px + var(--safe-t));right:16px;display:flex;gap:4px;background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:3px}
+  .tilkichik button{border:0;background:none;color:var(--muted);font-size:12px;font-weight:700;padding:5px 10px;border-radius:16px}
+  .tilkichik button.on{background:var(--gold);color:#2b1d00}
+  #kirish,#ruxsat{position:relative}
   .demo{background:#3a2a05;color:var(--gold2);text-align:center;font-size:12px;padding:6px}
 
   /* ---------- Davr ---------- */
@@ -143,36 +150,38 @@
 <body>
 
 <!-- ============ YUKLANMOQDA ============ -->
-<section id="yukl"><div class="logo">Au</div><div>Yuklanmoqda…</div></section>
+<section id="yukl"><div class="logo">Au</div><div data-t="yuklanmoqda">Yuklanmoqda…</div></section>
 
 <!-- ============ RUXSAT YO'Q (Telegram) ============ -->
 <section id="ruxsat" class="hidden">
+  <div class="tilkichik"><button data-til="uz">UZ</button><button data-til="tr">TR</button></div>
   <div class="logo">Au</div>
-  <h1>Ruxsat berilmagan</h1>
-  <p class="sub">Bu ilovani ko'rish uchun admin sizga ruxsat berishi kerak. Quyidagi raqamni adminga yuboring.</p>
-  <div class="idkarta"><small>Sizning Telegram raqamingiz</small><b id="rId">—</b>
-    <button class="tugma" id="rNusxa">📋 Nusxa olish</button></div>
-  <button class="tugma ikkinchi" id="rQayta" style="background:var(--panel2);color:var(--text)">↻ Ruxsat berildi – qayta kirish</button>
+  <h1 data-t="ruxsatYoq">Ruxsat berilmagan</h1>
+  <p class="sub" data-t="ruxsatMatn">Bu ilovani ko'rish uchun admin sizga ruxsat berishi kerak. Quyidagi raqamni adminga yuboring.</p>
+  <div class="idkarta"><small data-t="raqamingiz">Sizning Telegram raqamingiz</small><b id="rId">—</b>
+    <button class="tugma" id="rNusxa" data-t="nusxa">📋 Nusxa olish</button></div>
+  <button class="tugma ikkinchi" id="rQayta" style="background:var(--panel2);color:var(--text)" data-t="qayta">↻ Ruxsat berildi – qayta kirish</button>
 </section>
 
 <!-- ============ KIRISH ============ -->
 <section id="kirish" class="hidden">
+  <div class="tilkichik"><button data-til="uz">UZ</button><button data-til="tr">TR</button></div>
   <div class="logo">Au</div>
-  <h1>Oltin hisobi</h1>
-  <p class="sub">Ko'rish uchun login va parolni kiriting</p>
+  <h1 data-t="nom">Oltin hisobi</h1>
+  <p class="sub" data-t="kirishMatn">Ko'rish uchun login va parolni kiriting</p>
   <form id="kForm" autocomplete="on">
     <label class="maydon"><span>Login</span>
       <input id="kLogin" autocapitalize="none" autocomplete="username" spellcheck="false" required></label>
-    <label class="maydon"><span>Parol</span>
+    <label class="maydon"><span data-t="parol">Parol</span>
       <input id="kParol" type="password" autocomplete="current-password" required></label>
-    <button class="tugma" id="kTugma" type="submit">Kirish</button>
+    <button class="tugma" id="kTugma" type="submit" data-t="kirish">Kirish</button>
   </form>
   <div class="xato" id="kXato"></div>
 </section>
 
 <!-- ============ ILOVA ============ -->
 <section id="ilova" class="hidden">
-  <div class="demo hidden" id="demoBelgi">Namuna ma'lumotlar (demo)</div>
+  <div class="demo hidden" id="demoBelgi" data-t="demo">Namuna ma'lumotlar (demo)</div>
   <header>
     <div class="hrow">
       <div class="logo mini">Au</div>
@@ -189,23 +198,24 @@
 <div class="menyu hidden" id="menyu">
   <div class="oyna">
     <b id="mIsm"></b>
-    <p>Ma'lumot faqat ko'rish uchun. O'zgartirish kompyuterdagi jadvalda qilinadi.</p>
-    <button class="tugma" id="chiqT">Chiqish</button>
-    <button class="tugma ikkinchi" id="yopT">Yopish</button>
+    <p data-t="menyuMatn">Ma'lumot faqat ko'rish uchun. O'zgartirish kompyuterdagi jadvalda qilinadi.</p>
+    <div class="tillar"><button data-til="uz">🇺🇿 O'zbekcha</button><button data-til="tr">🇹🇷 Türkçe</button></div>
+    <button class="tugma" id="chiqT" data-t="chiqish">Chiqish</button>
+    <button class="tugma ikkinchi" id="yopT" data-t="yopish">Yopish</button>
   </div>
 </div>
 
 <div class="menyu hidden" id="davrOyna">
   <div class="oyna">
-    <b>Davrni tanlang</b>
-    <p>Qaysi kundan qaysi kungacha ko'rsatilsin</p>
+    <b data-t="davrTanlang">Davrni tanlang</b>
+    <p data-t="davrMatn">Qaysi kundan qaysi kungacha ko'rsatilsin</p>
     <div class="sanalar">
-      <label class="maydon"><span>Dan</span><input type="date" id="dDan"></label>
-      <label class="maydon"><span>Gacha</span><input type="date" id="dGacha"></label>
+      <label class="maydon"><span data-t="dan">Dan</span><input type="date" id="dDan"></label>
+      <label class="maydon"><span data-t="gacha">Gacha</span><input type="date" id="dGacha"></label>
     </div>
     <div class="xato" id="dXato" style="min-height:0;margin:0 0 6px"></div>
-    <button class="tugma" id="dOk">Ko'rsatish</button>
-    <button class="tugma ikkinchi" id="dYop">Bekor qilish</button>
+    <button class="tugma" id="dOk" data-t="korsatish">Ko'rsatish</button>
+    <button class="tugma ikkinchi" id="dYop" data-t="bekor">Bekor qilish</button>
   </div>
 </div>
 
@@ -225,6 +235,91 @@
   const $ = s => document.querySelector(s);
   let D = null, sahifa = localStorage.getItem('sahifa') || 'asosiy', tanlanganKassa = 'Hammasi';
 
+  /* ---------- tillar ---------- */
+  const LUGAT = {
+    uz: {
+      nom:'Oltin hisobi', yuklanmoqda:'Yuklanmoqda…', ruxsatYoq:'Ruxsat berilmagan',
+      ruxsatMatn:"Bu ilovani ko'rish uchun admin sizga ruxsat berishi kerak. Quyidagi raqamni adminga yuboring.",
+      raqamingiz:'Sizning Telegram raqamingiz', nusxa:'📋 Nusxa olish', nusxaOlindi:'✓ Nusxa olindi', qayta:'↻ Ruxsat berildi – qayta kirish',
+      kirishMatn:"Ko'rish uchun login va parolni kiriting", parol:'Parol', kirish:'Kirish', tekshirilmoqda:'Tekshirilmoqda…', xato:'Xato',
+      demo:"Namuna ma'lumotlar (demo)", menyuMatn:"Ma'lumot faqat ko'rish uchun. O'zgartirish kompyuterdagi jadvalda qilinadi.",
+      chiqish:'Chiqish', ilovaniYop:'Ilovani yopish', yopish:'Yopish',
+      davrTanlang:'Davrni tanlang', davrMatn:"Qaysi kundan qaysi kungacha ko'rsatilsin", dan:'Dan', gacha:'Gacha',
+      korsatish:"Ko'rsatish", bekor:'Bekor qilish', ikkalaSana:'Ikkala sanani ham tanlang', sanaTartib:"«Dan» sanasi «Gacha»dan keyin bo'lmasin",
+      aloqaYoq:"Internet yoki server bilan aloqa yo'q", internetYoq:"Internet yo'q. Oxirgi saqlangan ma'lumot ko'rsatilmoqda.",
+      d_jadval:'📋 Jadvaldagi', d_bugun:'Bugun', d_kecha:'Kecha', d_hafta:'Bu hafta', d_oy:'Bu oy', d_otgan:"O'tgan oy", d_yil:'Bu yil', d_tanlash:'📅 Tanlash',
+      davr:'Davr', s_asosiy:'Asosiy', s_bolimlar:"Bo'limlar", s_ishlab:'Ishlab chiq.', s_ustalar:'Ustalar',
+      sahifaYoq:'Sizga hech qaysi sahifa ochilmagan. Adminga murojaat qiling.', yangilangan:'Yangilangan',
+      k_jami:'🏦 KORXONADAGI JAMI OLTIN', hisobida999:'999.9 hisobida', shundanIshda:'⚙ Shundan ishlab chiqarishda',
+      k_kirim:'📥 TASHQARIDAN KIRIM', kirimYoq:"Bu davrda kirim yo'q", brak:'brak',
+      k_dokon:"🏪 DO'KONGA BERILDI", dona:'dona', k_poterya:'🔥 POTERYA (QAYTMAYDIGAN)', jamiPoterya:'Jami poterya',
+      k_kutil:'♻️ QAYTISHI KUTILAYOTGAN', yozuvKutyapti:'{0} ta yozuv kutyapti',
+      k_qabulsiz:'⏳ QABUL QILINMAGAN', berishHozir:'{0} ta berish (hozir)',
+      k_temir:'⛓️ TEMIRLI MOL', brutto:'Brutto', k_xato:'❗ XATO YOZUVLAR', ta:'{0} ta', jadvaldaTekshir:'Jadvalda tekshiring', joyida:'Hammasi joyida',
+      korxonaBoyicha:"Korxona bo'yicha", kassalar:'Kassalar', ishlabda:'⚙ Ishlab chiqarishda', ishlabdaYoq:"Ishlab chiqarishda yo'q", malumotYoq:"Ma'lumot yo'q",
+      qaysiBolim:"QAYSI BO'LIMDA QANCHA OLTIN BOR · {0} HOLATIGA", ustaxonalar:'Ustaxonalar', bosh_ustaxona:"Qolgan {0} ta ustaxonada oltin yo'q",
+      hammasi:'Hammasi', olishiKerak:"BO'LIMLARDAN OLISHI KERAK · {0} HOLATIGA", olishIzoh:'ishda qolgan + qaytishi kutilayotgan poterya',
+      kassaBolim:"Kassa → bo'lim", ochiqIshlar:'ochiq ishlar', olishiKerakG:'olishi kerak, g', berdi:'Berdi', qaytardi:'Qaytardi', poterya:'Poterya',
+      ishlabYoq:"Bu davrda ishlab chiqarish yo'q", ochiqIshlarS:'Ochiq ishlar ({0})', berildi:'berildi', ochiqYoq:"Ochiq ish yo'q",
+      ustaDavr:"⏱ Ustalar ish vaqti jadvaldagi davr bo'yicha", hozirIshda:'Hozir ishda ({0})', hozirYoq:"Hozir ochiq ish yo'q",
+      bandlik:'Ustalar bandligi (davr)', ishladi:'ishladi'
+    },
+    tr: {
+      nom:'Altın takibi', yuklanmoqda:'Yükleniyor…', ruxsatYoq:'Erişim izni yok',
+      ruxsatMatn:'Bu uygulamayı görmek için yöneticinin size izin vermesi gerekiyor. Aşağıdaki numarayı yöneticiye gönderin.',
+      raqamingiz:'Telegram numaranız', nusxa:'📋 Kopyala', nusxaOlindi:'✓ Kopyalandı', qayta:'↻ İzin verildi – tekrar giriş',
+      kirishMatn:'Görüntülemek için kullanıcı adı ve şifrenizi girin', parol:'Şifre', kirish:'Giriş', tekshirilmoqda:'Kontrol ediliyor…', xato:'Hata',
+      demo:'Örnek veriler (demo)', menyuMatn:'Veriler yalnızca görüntüleme içindir. Değişiklikler bilgisayardaki tabloda yapılır.',
+      chiqish:'Çıkış', ilovaniYop:'Uygulamayı kapat', yopish:'Kapat',
+      davrTanlang:'Dönem seçin', davrMatn:'Hangi tarihten hangi tarihe kadar gösterilsin', dan:'Başlangıç', gacha:'Bitiş',
+      korsatish:'Göster', bekor:'Vazgeç', ikkalaSana:'İki tarihi de seçin', sanaTartib:'Başlangıç tarihi bitiş tarihinden sonra olamaz',
+      aloqaYoq:'İnternet veya sunucu bağlantısı yok', internetYoq:'İnternet yok. Son kaydedilen veriler gösteriliyor.',
+      d_jadval:'📋 Tablodaki', d_bugun:'Bugün', d_kecha:'Dün', d_hafta:'Bu hafta', d_oy:'Bu ay', d_otgan:'Geçen ay', d_yil:'Bu yıl', d_tanlash:'📅 Seç',
+      davr:'Dönem', s_asosiy:'Ana sayfa', s_bolimlar:'Bölümler', s_ishlab:'Üretim', s_ustalar:'Ustalar',
+      sahifaYoq:'Size hiçbir sayfa açılmamış. Yöneticiye başvurun.', yangilangan:'Güncellendi',
+      k_jami:'🏦 İŞLETMEDEKİ TOPLAM ALTIN', hisobida999:'999.9 karşılığı', shundanIshda:'⚙ Bunun üretimde olanı',
+      k_kirim:'📥 DIŞARIDAN GİRİŞ', kirimYoq:'Bu dönemde giriş yok', brak:'iade',
+      k_dokon:'🏪 MAĞAZAYA VERİLEN', dona:'adet', k_poterya:'🔥 FİRE (GERİ DÖNMEYEN)', jamiPoterya:'Toplam fire',
+      k_kutil:'♻️ GERİ DÖNMESİ BEKLENEN', yozuvKutyapti:'{0} kayıt bekliyor',
+      k_qabulsiz:'⏳ TESLİM ALINMAMIŞ', berishHozir:'{0} teslimat (şu an)',
+      k_temir:'⛓️ DEMİRLİ MAL', brutto:'Brüt', k_xato:'❗ HATALI KAYITLAR', ta:'{0} adet', jadvaldaTekshir:'Tabloda kontrol edin', joyida:'Her şey yolunda',
+      korxonaBoyicha:'İşletme geneli', kassalar:'Kasalar', ishlabda:'⚙ Üretimde', ishlabdaYoq:'Üretimde yok', malumotYoq:'Veri yok',
+      qaysiBolim:'HANGİ BÖLÜMDE NE KADAR ALTIN VAR · {0} İTİBARIYLA', ustaxonalar:'Atölyeler', bosh_ustaxona:'Kalan {0} atölyede altın yok',
+      hammasi:'Tümü', olishiKerak:'BÖLÜMLERDEN ALINACAK · {0} İTİBARIYLA', olishIzoh:'işte kalan + geri dönmesi beklenen fire',
+      kassaBolim:'Kasa → bölüm', ochiqIshlar:'açık işler', olishiKerakG:'alınacak, g', berdi:'Verdi', qaytardi:'Geri verdi', poterya:'Fire',
+      ishlabYoq:'Bu dönemde üretim yok', ochiqIshlarS:'Açık işler ({0})', berildi:'verildi', ochiqYoq:'Açık iş yok',
+      ustaDavr:'⏱ Ustaların çalışma süresi tablodaki döneme göre', hozirIshda:'Şu an işte ({0})', hozirYoq:'Şu an açık iş yok',
+      bandlik:'Ustaların doluluk oranı (dönem)', ishladi:'çalıştı'
+    }
+  };
+  /* Jadvaldan keladigan tayyor matnlar (Ish vaqti kartalari, server xabarlari) – turkchaga */
+  const JADVAL_TR = [
+    [/^👷 USTALAR$/, '👷 USTALAR'], [/^✅ ISHLADI$/, '✅ ÇALIŞILAN'], [/^😴 BO'SH TURDI$/, '😴 BOŞTA KALAN'], [/^📊 O'RTACHA BANDLIK$/, '📊 ORTALAMA DOLULUK'],
+    [/Hozir ishda: (\d+) ta usta/, 'Şu an çalışan: $1 usta'], [/Qo'shimcha:/, 'Fazla mesai:'], [/Norma:/, 'Norm:'],
+    [/Eng ko'p:/, 'En çok:'], [/Jarayondagi ishlar: (\d+) ta/, 'Devam eden işler: $1'], [/(\d+) ta\b/g, '$1 adet'],
+    [/Sessiya tugagan\. Qayta kiring/, 'Oturum sona erdi. Tekrar giriş yapın'], [/Login yoki parol noto'g'ri/, 'Kullanıcı adı veya şifre hatalı'],
+    [/Login va parolni kiriting/, 'Kullanıcı adı ve şifreyi girin'], [/Kirish yopilgan\. Adminga murojaat qiling/, 'Erişim kapatıldı. Yöneticiye başvurun'],
+    [/Juda ko'p noto'g'ri urinish\. (\d+) daqiqadan keyin qayta urinib ko'ring/, 'Çok fazla hatalı deneme. $1 dakika sonra tekrar deneyin'],
+    [/Telegram tasdig'i o'tmadi\. Ilovani yopib qayta oching/, 'Telegram doğrulaması başarısız. Uygulamayı kapatıp yeniden açın']
+  ];
+  const tgTil = (() => { try { return Telegram.WebApp.initDataUnsafe.user.language_code || ''; } catch(e) { return ''; } })();
+  let til = (() => { try { return localStorage.getItem('til'); } catch(e) { return null; } })() || (/^tr/.test(tgTil) ? 'tr' : 'uz');
+  const T = (k, ...a) => String((LUGAT[til] && LUGAT[til][k]) || LUGAT.uz[k] || k).replace(/\{(\d)\}/g, (m, i) => a[i]);
+  const J = s => { if (til !== 'tr' || s == null) return s; let r = String(s); JADVAL_TR.forEach(([a, b]) => r = r.replace(a, b)); return r; };
+  function tilQoy(){
+    document.documentElement.lang = til;
+    document.title = T('nom');
+    document.querySelectorAll('[data-t]').forEach(el => el.textContent = T(el.dataset.t));
+    document.querySelectorAll('[data-til]').forEach(el => el.classList.toggle('on', el.dataset.til === til));
+    if (typeof TG !== 'undefined' && TG) $('#chiqT').textContent = T('ilovaniYop');
+  }
+  document.addEventListener('click', ev => {
+    const b = ev.target.closest('[data-til]'); if (!b) return;
+    til = b.dataset.til; try { localStorage.setItem('til', til); } catch(e) {}
+    tilQoy();
+    if (D && !$('#ilova').classList.contains('hidden')) chiz();
+  });
+
   const fmt = (x, k = 2) => (Number(x) || 0).toLocaleString('ru-RU', {minimumFractionDigits:k, maximumFractionDigits:k});
   const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
   const token = () => { try { return localStorage.getItem('token'); } catch(e) { return null; } };
@@ -232,10 +327,7 @@
   /* ---------- davr ---------- */
   const iso = d => d.getFullYear() + '-' + ('0'+(d.getMonth()+1)).slice(-2) + '-' + ('0'+d.getDate()).slice(-2);
   const kun = (y, m, d) => new Date(y, m, d);
-  const DAVRLAR = [
-    {k:'jadval', n:'📋 Jadvaldagi'},
-    {k:'bugun', n:'Bugun'}, {k:'kecha', n:'Kecha'}, {k:'hafta', n:'Bu hafta'},
-    {k:'oy', n:'Bu oy'}, {k:'otgan', n:'O\'tgan oy'}, {k:'yil', n:'Bu yil'}, {k:'tanlash', n:'📅 Tanlash'}];
+  const DAVRLAR = ['jadval', 'bugun', 'kecha', 'hafta', 'oy', 'otgan', 'yil', 'tanlash'].map(k => ({k}));
   function davrHisob(k){
     const b = new Date(), y = b.getFullYear(), m = b.getMonth(), d = b.getDate();
     if (k === 'bugun') return [kun(y,m,d), kun(y,m,d)];
@@ -253,7 +345,7 @@
     const r = davrHisob(davr.k); return {dan: iso(r[0]), gacha: iso(r[1])};
   }
   function davrQator(){
-    $('#davrQ').innerHTML = DAVRLAR.map(x => `<button class="chip ${x.k===davr.k?'on':''}" data-d="${x.k}">${x.n}</button>`).join('');
+    $('#davrQ').innerHTML = DAVRLAR.map(x => `<button class="chip ${x.k===davr.k?'on':''}" data-d="${x.k}">${T('d_' + x.k)}</button>`).join('');
     const on = $('#davrQ .chip.on'); if (on) on.scrollIntoView({inline:'nearest', block:'nearest'});
   }
   function davrSaqla(yangi){
@@ -275,8 +367,8 @@
   });
   $('#dOk').onclick = () => {
     const a = $('#dDan').value, g = $('#dGacha').value;
-    if (!a || !g) { $('#dXato').textContent = 'Ikkala sanani ham tanlang'; return; }
-    if (a > g) { $('#dXato').textContent = '«Dan» sanasi «Gacha»dan keyin bo\'lmasin'; return; }
+    if (!a || !g) { $('#dXato').textContent = T('ikkalaSana'); return; }
+    if (a > g) { $('#dXato').textContent = T('sanaTartib'); return; }
     $('#davrOyna').classList.add('hidden');
     davrSaqla({k:'tanlash', dan:a, gacha:g});
   };
@@ -292,21 +384,21 @@
   /* ---------- kirish ---------- */
   $('#kForm').addEventListener('submit', async ev => {
     ev.preventDefault();
-    const t = $('#kTugma'); t.disabled = true; t.textContent = 'Tekshirilmoqda…'; $('#kXato').textContent = '';
+    const t = $('#kTugma'); t.disabled = true; t.textContent = T('tekshirilmoqda'); $('#kXato').textContent = '';
     try {
       const j = await so({amal:'kirish', login:$('#kLogin').value, parol:$('#kParol').value});
-      if (!j.ok) { $('#kXato').textContent = j.xato || 'Xato'; return; }
+      if (!j.ok) { $('#kXato').textContent = J(j.xato) || T('xato'); return; }
       localStorage.setItem('token', j.token);
       $('#kParol').value = '';
       await yukla();
-    } catch(e) { $('#kXato').textContent = 'Internet yoki server bilan aloqa yo\'q'; }
-    finally { t.disabled = false; t.textContent = 'Kirish'; }
+    } catch(e) { $('#kXato').textContent = T('aloqaYoq'); }
+    finally { t.disabled = false; t.textContent = T('kirish'); }
   });
 
   const yashir = () => ['#yukl','#ruxsat','#kirish','#ilova'].forEach(x => $(x).classList.add('hidden'));
   function kirishniKorsat(xabar){
     yashir(); $('#kirish').classList.remove('hidden');
-    $('#kXato').textContent = xabar || '';
+    $('#kXato').textContent = J(xabar) || '';
   }
   function ruxsatKorsat(id){
     yashir(); $('#ruxsat').classList.remove('hidden'); $('#rId').textContent = id || '—';
@@ -318,14 +410,14 @@
       if (j.ok) { localStorage.setItem('token', j.token); return yukla(); }
       if (j.ruxsatYoq) return ruxsatKorsat(j.id);
       kirishniKorsat(j.xato);
-    } catch(e) { kirishniKorsat('Internet yoki server bilan aloqa yo\'q'); }
+    } catch(e) { kirishniKorsat(T('aloqaYoq')); }
   }
   $('#rNusxa').onclick = async () => {
     const t = $('#rId').textContent;
     try { await navigator.clipboard.writeText(t); }
     catch(e) { const r = document.createRange(); r.selectNodeContents($('#rId')); const s = getSelection(); s.removeAllRanges(); s.addRange(r); document.execCommand('copy'); }
-    $('#rNusxa').textContent = '✓ Nusxa olindi';
-    setTimeout(() => $('#rNusxa').textContent = '📋 Nusxa olish', 2000);
+    $('#rNusxa').textContent = T('nusxaOlindi');
+    setTimeout(() => $('#rNusxa').textContent = T('nusxa'), 2000);
   };
   $('#rQayta').onclick = () => tgKirish();
 
@@ -337,33 +429,31 @@
     try {
       const j = await so(Object.assign({amal:'malumot', token: token()}, davrSorov()));
       if (men !== sorovNo) return;            // eskirgan javob (davr almashtirilgan)
-      if (!j.ok) { if (j.chiqdi) { localStorage.removeItem('token'); if (TG) tgKirish(); else kirishniKorsat(j.xato); } else if (!jim) alert(j.xato); return; }
+      if (!j.ok) { if (j.chiqdi) { localStorage.removeItem('token'); if (TG) tgKirish(); else kirishniKorsat(j.xato); } else if (!jim) alert(J(j.xato)); return; }
       D = j;
       try { localStorage.setItem('oxirgi', JSON.stringify(j)); } catch(e) {}
       chiz();
     } catch(e) {
       const eski = localStorage.getItem('oxirgi');
       if (eski && !D) { D = JSON.parse(eski); chiz(); }
-      else if (!D) kirishniKorsat('Internet yoki server bilan aloqa yo\'q');
-      if (!jim) alert('Internet yo\'q. Oxirgi saqlangan ma\'lumot ko\'rsatilmoqda.');
+      else if (!D) kirishniKorsat(T('aloqaYoq'));
+      if (!jim) alert(T('internetYoq'));
     } finally { if (men === sorovNo) { b.classList.remove('aylan'); $('#ilova').classList.remove('yuklanmoqda'); } }
   }
 
   /* ---------- chizish ---------- */
-  const SAHIFALAR = [
-    {k:'asosiy', e:'🏠', n:'Asosiy'}, {k:'bolimlar', e:'🏦', n:'Bo\'limlar'},
-    {k:'ishlab', e:'⚙️', n:'Ishlab chiq.'}, {k:'ustalar', e:'⏱', n:'Ustalar'}];
+  const SAHIFALAR = [{k:'asosiy', e:'🏠'}, {k:'bolimlar', e:'🏦'}, {k:'ishlab', e:'⚙️'}, {k:'ustalar', e:'⏱'}];
 
   function chiz(){
     yashir(); $('#ilova').classList.remove('hidden');
     $('#demoBelgi').classList.toggle('hidden', !DEMO);
     $('#hIsm').textContent = D.ism; $('#mIsm').textContent = D.ism;
-    $('#hDavr').innerHTML = 'Davr: <b>' + esc(D.dan === D.gacha ? D.dan : D.dan + ' — ' + D.gacha) + '</b>';
+    $('#hDavr').innerHTML = T('davr') + ': <b>' + esc(D.dan === D.gacha ? D.dan : D.dan + ' — ' + D.gacha) + '</b>';
     davrQator();
     const ruxsat = SAHIFALAR.filter(s => D.sahifa[s.k]);
-    if (!ruxsat.length) { $('#sahifa').innerHTML = '<div class="bosh">Sizga hech qaysi sahifa ochilmagan. Adminga murojaat qiling.</div>'; $('#nav').innerHTML=''; return; }
+    if (!ruxsat.length) { $('#sahifa').innerHTML = '<div class="bosh">' + T('sahifaYoq') + '</div>'; $('#nav').innerHTML=''; return; }
     if (!D.sahifa[sahifa]) sahifa = ruxsat[0].k;
-    $('#nav').innerHTML = ruxsat.map(s => `<button data-s="${s.k}" class="${s.k===sahifa?'on':''}"><span class="e">${s.e}</span>${s.n}</button>`).join('');
+    $('#nav').innerHTML = ruxsat.map(s => `<button data-s="${s.k}" class="${s.k===sahifa?'on':''}"><span class="e">${s.e}</span>${T('s_' + s.k)}</button>`).join('');
     $('#nav').classList.toggle('hidden', ruxsat.length < 2);
     ({asosiy, bolimlar, ishlab, ustalar})[sahifa]();
   }
@@ -371,7 +461,7 @@
     const b = ev.target.closest('button'); if (!b) return;
     sahifa = b.dataset.s; localStorage.setItem('sahifa', sahifa); chiz(); window.scrollTo(0,0);
   });
-  const yangilandi = () => `<div class="yangilandi">Yangilangan: ${esc(D.vaqt)}</div>`;
+  const yangilandi = () => `<div class="yangilandi">${T('yangilangan')}: ${esc(D.vaqt)}</div>`;
 
   const RANGLAR = ['#b5850f','#2a8c57','#2b62c4','#c7392f','#127a7d','#2a8c57','#6d4930','#2a8c57'];
   function asosiy(){
@@ -381,19 +471,19 @@
       const t9 = g => fmt(g*585/999.9) + ' g';
       const foiz = (a, b) => b > 0.005 ? (a/b*100).toLocaleString('ru-RU', {maximumFractionDigits:2}) + '%' : '0%';
       const ham = (K.tashqi.hamkorlar || []).filter(x => Math.abs(x.g) > 0.005)
-        .map(x => (/do.?kon/i.test(x.nom) ? '↩️ ' + x.nom + ' (brak): ' : '🛒 ' + x.nom + ': ') + fmt(x.g) + ' g').join('\n');
+        .map(x => (/do.?kon/i.test(x.nom) ? '↩️ ' + x.nom + ' (' + T('brak') + '): ' : '🛒 ' + x.nom + ': ') + fmt(x.g) + ' g').join('\n');
       const P = K.poterya;
       const kartalar = [
-        ['🏦 KORXONADAGI JAMI OLTIN', fmt(K.jami) + ' g', '999.9 hisobida: ' + t9(K.jami) + '\n⚙ Shundan ishlab chiqarishda: ' + fmt(K.ishda) + ' g'],
-        ['📥 TASHQARIDAN KIRIM', fmt(K.tashqi.jami) + ' g', (ham || 'Bu davrda kirim yo\'q') + '\n999.9: ' + t9(K.tashqi.jami)],
-        ['🏪 DO\'KONGA BERILDI', fmt(K.dokonga.g) + ' g', fmt(K.dokonga.dona, 0) + ' dona\n999.9: ' + t9(K.dokonga.g)],
-        ['🔥 POTERYA (QAYTMAYDIGAN)', fmt(P.qaytmaydigan) + ' g', foiz(P.qaytmaydigan, P.ishgaKirdi) + ' · 999.9: ' + t9(P.qaytmaydigan)
-          + '\nJami poterya: ' + fmt(P.jami) + ' g (' + foiz(P.jami, P.ishgaKirdi) + ')'],
-        ['♻️ QAYTISHI KUTILAYOTGAN', fmt(K.kutilmoqda.g) + ' g', K.kutilmoqda.soni + ' ta yozuv kutyapti\n999.9: ' + t9(K.kutilmoqda.g)],
-        ['⏳ QABUL QILINMAGAN', fmt(K.qabulsiz.g) + ' g', K.qabulsiz.soni + ' ta berish (hozir)\n999.9: ' + t9(K.qabulsiz.g)],
-        ['⛓️ TEMIRLI MOL', fmt(K.temirli.g) + ' g', '999.9: ' + t9(K.temirli.g) + '\nBrutto: ' + fmt(K.temirli.brutto) + ' g'],
-        ['❗ XATO YOZUVLAR', K.xato + ' ta', K.xato ? 'Jadvalda tekshiring' : 'Hammasi joyida']];
-      h += '<h2>Korxona bo\'yicha</h2><div class="kartalar">';
+        [T('k_jami'), fmt(K.jami) + ' g', T('hisobida999') + ': ' + t9(K.jami) + '\n' + T('shundanIshda') + ': ' + fmt(K.ishda) + ' g'],
+        [T('k_kirim'), fmt(K.tashqi.jami) + ' g', (ham || T('kirimYoq')) + '\n999.9: ' + t9(K.tashqi.jami)],
+        [T('k_dokon'), fmt(K.dokonga.g) + ' g', fmt(K.dokonga.dona, 0) + ' ' + T('dona') + '\n999.9: ' + t9(K.dokonga.g)],
+        [T('k_poterya'), fmt(P.qaytmaydigan) + ' g', foiz(P.qaytmaydigan, P.ishgaKirdi) + ' · 999.9: ' + t9(P.qaytmaydigan)
+          + '\n' + T('jamiPoterya') + ': ' + fmt(P.jami) + ' g (' + foiz(P.jami, P.ishgaKirdi) + ')'],
+        [T('k_kutil'), fmt(K.kutilmoqda.g) + ' g', T('yozuvKutyapti', K.kutilmoqda.soni) + '\n999.9: ' + t9(K.kutilmoqda.g)],
+        [T('k_qabulsiz'), fmt(K.qabulsiz.g) + ' g', T('berishHozir', K.qabulsiz.soni) + '\n999.9: ' + t9(K.qabulsiz.g)],
+        [T('k_temir'), fmt(K.temirli.g) + ' g', '999.9: ' + t9(K.temirli.g) + '\n' + T('brutto') + ': ' + fmt(K.temirli.brutto) + ' g'],
+        [T('k_xato'), T('ta', K.xato), K.xato ? T('jadvaldaTekshir') : T('joyida')]];
+      h += '<h2>' + T('korxonaBoyicha') + '</h2><div class="kartalar">';
       kartalar.forEach((k, i) => {
         h += `<div class="karta ${i===0?'keng':''}" style="background:${RANGLAR[i]}">
           <div class="n">${esc(k[0])}</div><div class="q">${esc(k[1])}</div><div class="i">${esc(k[2])}</div></div>`;
@@ -401,15 +491,15 @@
       h += '</div>';
     }
     if (D.kassalar && D.kassalar.length) {
-      h += '<h2>Kassalar</h2><div class="ro">';
+      h += '<h2>' + T('kassalar') + '</h2><div class="ro">';
       D.kassalar.forEach(k => {
         h += `<div class="qator"><div class="nom"><b>${esc(k.nom)}</b>
-          <small>${k.ishlab > 0.005 ? '⚙ Ishlab chiqarishda: ' + fmt(k.ishlab) + ' g' : 'Ishlab chiqarishda yo\'q'}</small></div>
+          <small>${k.ishlab > 0.005 ? T('ishlabda') + ': ' + fmt(k.ishlab) + ' g' : T('ishlabdaYoq')}</small></div>
           <div class="son">${fmt(k.qoldiq)} g<small>${fmt(k.qoldiq*585/999.9)} g (999.9)</small></div></div>`;
       });
       h += '</div>';
     }
-    if (!h) h = '<div class="bosh">Ma\'lumot yo\'q</div>';
+    if (!h) h = '<div class="bosh">' + T('malumotYoq') + '</div>';
     $('#sahifa').innerHTML = h + yangilandi();
   }
 
@@ -421,10 +511,10 @@
       <div class="son">${fmt(x.qoldiq)} g<small>${fmt(x.qoldiq*585/999.9)} (999.9)</small></div></div>`).join('') + '</div>';
     const kassa = b.filter(x => x.turi === 'Kassa'), ust = b.filter(x => x.turi !== 'Kassa');
     const jami = b.reduce((s, x) => s + x.qoldiq, 0);
-    $('#sahifa').innerHTML = `<div class="karta keng" style="background:#b5850f"><div class="n">QAYSI BO'LIMDA QANCHA OLTIN BOR · ${esc(D.gacha)} HOLATIGA</div>
-      <div class="q">${fmt(jami)} g</div><div class="i">999.9 hisobida: ${fmt(jami*585/999.9)} g</div></div>`
-      + guruh('Kassalar', kassa) + guruh('Ustaxonalar', ust.filter(x => Math.abs(x.qoldiq) > 0.005))
-      + (ust.some(x => Math.abs(x.qoldiq) <= 0.005) ? `<div class="yangilandi">Qolgan ${ust.filter(x => Math.abs(x.qoldiq) <= 0.005).length} ta ustaxonada oltin yo'q</div>` : '')
+    $('#sahifa').innerHTML = `<div class="karta keng" style="background:#b5850f"><div class="n">${T('qaysiBolim', esc(D.gacha))}</div>
+      <div class="q">${fmt(jami)} g</div><div class="i">${T('hisobida999')}: ${fmt(jami*585/999.9)} g</div></div>`
+      + guruh(T('kassalar'), kassa) + guruh(T('ustaxonalar'), ust.filter(x => Math.abs(x.qoldiq) > 0.005))
+      + (ust.some(x => Math.abs(x.qoldiq) <= 0.005) ? `<div class="yangilandi">${T('bosh_ustaxona', ust.filter(x => Math.abs(x.qoldiq) <= 0.005).length)}</div>` : '')
       + yangilandi();
   }
 
@@ -436,39 +526,39 @@
     const jj = j.filter(f).filter(x => Math.abs(x.ishda + x.kutilmoqda) > 0.005 || x.berdi > 0.005)
       .sort((a,b) => (b.ishda + b.kutilmoqda) - (a.ishda + a.kutilmoqda));
     const jami = jj.reduce((s, x) => s + x.ishda + x.kutilmoqda, 0);
-    let h = kassalar.length > 2 ? `<div class="chiplar">${kassalar.map(k => `<button class="chip ${k===tanlanganKassa?'on':''}" data-k="${esc(k)}">${esc(k)}</button>`).join('')}</div>` : '';
-    h += `<div class="karta keng" style="background:#2b62c4"><div class="n">BO'LIMLARDAN OLISHI KERAK · ${esc(D.gacha)} HOLATIGA</div>
-      <div class="q">${fmt(jami)} g</div><div class="i">ishda qolgan + qaytishi kutilayotgan poterya</div></div>`;
-    h += '<h2>Kassa → bo\'lim</h2>';
-    h += jj.length ? jj.map(x => `<div class="qarz"><div class="t"><div><b>${esc(x.bolim)}</b><small>${esc(x.kassa)} · ochiq ishlar: ${x.ochiq}</small></div>
-        <div class="katta">${fmt(x.ishda + x.kutilmoqda)}<small>olishi kerak, g</small></div></div>
-        <div class="uch"><div><small>Berdi</small><b>${fmt(x.berdi)}</b></div><div><small>Qaytardi</small><b>${fmt(x.qaytdi)}</b></div><div><small>Poterya</small><b>${fmt(x.poterya)}</b></div></div></div>`).join('')
-      : '<div class="bosh">Bu davrda ishlab chiqarish yo\'q</div>';
+    let h = kassalar.length > 2 ? `<div class="chiplar">${kassalar.map(k => `<button class="chip ${k===tanlanganKassa?'on':''}" data-k="${esc(k)}">${k === 'Hammasi' ? T('hammasi') : esc(k)}</button>`).join('')}</div>` : '';
+    h += `<div class="karta keng" style="background:#2b62c4"><div class="n">${T('olishiKerak', esc(D.gacha))}</div>
+      <div class="q">${fmt(jami)} g</div><div class="i">${T('olishIzoh')}</div></div>`;
+    h += '<h2>' + T('kassaBolim') + '</h2>';
+    h += jj.length ? jj.map(x => `<div class="qarz"><div class="t"><div><b>${esc(x.bolim)}</b><small>${esc(x.kassa)} · ${T('ochiqIshlar')}: ${x.ochiq}</small></div>
+        <div class="katta">${fmt(x.ishda + x.kutilmoqda)}<small>${T('olishiKerakG')}</small></div></div>
+        <div class="uch"><div><small>${T('berdi')}</small><b>${fmt(x.berdi)}</b></div><div><small>${T('qaytardi')}</small><b>${fmt(x.qaytdi)}</b></div><div><small>${T('poterya')}</small><b>${fmt(x.poterya)}</b></div></div></div>`).join('')
+      : '<div class="bosh">' + T('ishlabYoq') + '</div>';
     const oo = o.filter(f);
-    h += `<h2>Ochiq ishlar (${oo.length})</h2>`;
+    h += `<h2>${T('ochiqIshlarS', oo.length)}</h2>`;
     h += oo.length ? '<div class="ro">' + oo.map(x => `<div class="qator"><div class="nom"><b>${esc(x.bolim)}</b>
         <small>${esc(x.usta)} · ${esc(x.sana)} · ${esc(x.kassa)}</small></div>
-        <div class="son">${fmt(x.qoldi)} g<small>berildi ${fmt(x.kirgan)}</small></div></div>`).join('') + '</div>'
-      : '<div class="bosh">Ochiq ish yo\'q</div>';
+        <div class="son">${fmt(x.qoldi)} g<small>${T('berildi')} ${fmt(x.kirgan)}</small></div></div>`).join('') + '</div>'
+      : '<div class="bosh">' + T('ochiqYoq') + '</div>';
     $('#sahifa').innerHTML = h + yangilandi();
     document.querySelectorAll('.chip').forEach(c => c.onclick = () => { tanlanganKassa = c.dataset.k; ishlab(); });
   }
 
   function ustalar(){
     const r = ['#2a8c57','#2a8c57','#6d4930','#2b62c4'];
-    let h = (D.ustaDavr ? `<div class="eslatma">⏱ Ustalar ish vaqti jadvaldagi davr bo'yicha: <b>${esc(D.ustaDavr)}</b></div>` : '')
+    let h = (D.ustaDavr ? `<div class="eslatma">${T('ustaDavr')}: <b>${esc(D.ustaDavr)}</b></div>` : '')
       + '<div class="kartalar">' + (D.ustaKarta||[]).map((k,i) => `<div class="karta" style="background:${r[i]}">
-      <div class="n">${esc(k.nom)}</div><div class="q">${esc(k.qiymat)}</div><div class="i">${esc(k.izoh)}</div></div>`).join('') + '</div>';
+      <div class="n">${esc(J(k.nom))}</div><div class="q">${esc(k.qiymat)}</div><div class="i">${esc(J(k.izoh))}</div></div>`).join('') + '</div>';
     const j = D.jarayonda || [];
-    h += `<h2>Hozir ishda (${j.length})</h2>` + (j.length ? '<div class="ro">' + j.map(x => `<div class="qator"><div class="nom"><b>${esc(x.usta)}</b>
+    h += `<h2>${T('hozirIshda', j.length)}</h2>` + (j.length ? '<div class="ro">' + j.map(x => `<div class="qator"><div class="nom"><b>${esc(x.usta)}</b>
       <small>${esc(x.ish)}</small></div><div class="son">${esc(x.davomiyligi)}<small>${esc(x.berilgan)}</small></div></div>`).join('') + '</div>'
-      : '<div class="bosh">Hozir ochiq ish yo\'q</div>');
+      : '<div class="bosh">' + T('hozirYoq') + '</div>');
     const u = (D.ustalar || []).slice().sort((a,b) => parseFloat(b.bandlik) - parseFloat(a.bandlik));
-    h += '<h2>Ustalar bandligi (davr)</h2><div class="ro">' + u.map(x => {
+    h += '<h2>' + T('bandlik') + '</h2><div class="ro">' + u.map(x => {
       const p = Math.min(100, parseFloat(String(x.bandlik).replace(',', '.')) || 0);
       return `<div class="qator"><div class="nom"><b>${esc(x.ism)}</b><small>${esc(x.bolim)}</small>
         <div class="bar"><i style="width:${p}%"></i></div></div>
-        <div class="son">${esc(x.bandlik)}<small>ishladi ${esc(x.ishladi)}</small></div></div>`; }).join('') + '</div>';
+        <div class="son">${esc(x.bandlik)}<small>${T('ishladi')} ${esc(x.ishladi)}</small></div></div>`; }).join('') + '</div>';
     $('#sahifa').innerHTML = h + yangilandi();
   }
 
@@ -477,7 +567,6 @@
   $('#menyuT').onclick = () => $('#menyu').classList.remove('hidden');
   $('#yopT').onclick = () => $('#menyu').classList.add('hidden');
   $('#menyu').onclick = ev => { if (ev.target.id === 'menyu') $('#menyu').classList.add('hidden'); };
-  if (TG) $('#chiqT').textContent = 'Ilovani yopish';
   $('#chiqT').onclick = async () => {
     if (TG) { TG.close(); return; }
     try { await so({amal:'chiqish', token: token()}); } catch(e) {}
@@ -525,6 +614,7 @@
   }
 
   /* ---------- boshlash ---------- */
+  tilQoy();
   if (token()) yukla();
   else if (TG) tgKirish();
   else kirishniKorsat(DEMO ? 'Namuna rejimi: istalgan login va parol bilan kiring' : '');
