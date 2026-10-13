@@ -126,6 +126,7 @@
   .menyu .oyna b{display:block;margin-bottom:4px}
   .menyu .oyna p{color:var(--muted);margin:0 0 14px;font-size:13px}
   .menyu .ikkinchi{background:var(--panel2);color:var(--text)}
+  .ikon.tilT{font-size:12px;font-weight:800;color:var(--gold2);letter-spacing:.5px}
   .tillar{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0 0 14px}
   .tillar button{padding:11px 8px;border-radius:12px;border:1px solid var(--line);background:var(--panel2);color:var(--text);font-weight:600}
   .tillar button.on{background:var(--gold);border-color:var(--gold);color:#2b1d00}
@@ -186,6 +187,7 @@
     <div class="hrow">
       <div class="logo mini">Au</div>
       <div class="htxt"><b id="hIsm">Oltin hisobi</b><small id="hDavr">—</small></div>
+      <button class="ikon tilT" id="tilT" aria-label="Til / Dil">UZ</button>
       <button class="ikon" id="yangila" aria-label="Yangilash">↻</button>
       <button class="ikon" id="menyuT" aria-label="Menyu">⋯</button>
     </div>
@@ -312,12 +314,17 @@
     document.querySelectorAll('[data-t]').forEach(el => el.textContent = T(el.dataset.t));
     document.querySelectorAll('[data-til]').forEach(el => el.classList.toggle('on', el.dataset.til === til));
     if (typeof TG !== 'undefined' && TG) $('#chiqT').textContent = T('ilovaniYop');
+    $('#tilT').textContent = til === 'tr' ? 'TR' : 'UZ';
   }
-  document.addEventListener('click', ev => {
-    const b = ev.target.closest('[data-til]'); if (!b) return;
-    til = b.dataset.til; try { localStorage.setItem('til', til); } catch(e) {}
+  function tilAlmash(yangi){
+    til = yangi; try { localStorage.setItem('til', til); } catch(e) {}
     tilQoy();
     if (D && !$('#ilova').classList.contains('hidden')) chiz();
+  }
+  $('#tilT').onclick = () => tilAlmash(til === 'tr' ? 'uz' : 'tr');
+  document.addEventListener('click', ev => {
+    const b = ev.target.closest('[data-til]'); if (!b) return;
+    tilAlmash(b.dataset.til);
   });
 
   const fmt = (x, k = 2) => (Number(x) || 0).toLocaleString('ru-RU', {minimumFractionDigits:k, maximumFractionDigits:k});
