@@ -149,7 +149,7 @@
 <section id="ruxsat" class="hidden">
   <div class="logo">Au</div>
   <h1>Ruxsat berilmagan</h1>
-  <p class="sub">Bu ilovani ko'rish uchun rahbar sizga ruxsat berishi kerak. Quyidagi raqamni unga yuboring.</p>
+  <p class="sub">Bu ilovani ko'rish uchun admin sizga ruxsat berishi kerak. Quyidagi raqamni adminga yuboring.</p>
   <div class="idkarta"><small>Sizning Telegram raqamingiz</small><b id="rId">—</b>
     <button class="tugma" id="rNusxa">📋 Nusxa olish</button></div>
   <button class="tugma ikkinchi" id="rQayta" style="background:var(--panel2);color:var(--text)">↻ Ruxsat berildi – qayta kirish</button>
@@ -361,7 +361,7 @@
     $('#hDavr').innerHTML = 'Davr: <b>' + esc(D.dan === D.gacha ? D.dan : D.dan + ' — ' + D.gacha) + '</b>';
     davrQator();
     const ruxsat = SAHIFALAR.filter(s => D.sahifa[s.k]);
-    if (!ruxsat.length) { $('#sahifa').innerHTML = '<div class="bosh">Sizga hech qaysi sahifa ochilmagan. Rahbarga murojaat qiling.</div>'; $('#nav').innerHTML=''; return; }
+    if (!ruxsat.length) { $('#sahifa').innerHTML = '<div class="bosh">Sizga hech qaysi sahifa ochilmagan. Adminga murojaat qiling.</div>'; $('#nav').innerHTML=''; return; }
     if (!D.sahifa[sahifa]) sahifa = ruxsat[0].k;
     $('#nav').innerHTML = ruxsat.map(s => `<button data-s="${s.k}" class="${s.k===sahifa?'on':''}"><span class="e">${s.e}</span>${s.n}</button>`).join('');
     $('#nav').classList.toggle('hidden', ruxsat.length < 2);
